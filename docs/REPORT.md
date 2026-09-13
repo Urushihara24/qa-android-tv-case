@@ -1,258 +1,258 @@
-# Результаты тестирования кэширования
+# Cache Testing Results
 
-Устройство: Android TV, 4K UHD | Метод записи: Screen Record
-Режим прогона: с кешем (для всех сценариев) | Дата: 29.07.26
+Device: Android TV, 4K UHD | Recording method: Screen Record  
+Execution mode: cache enabled for all scenarios | Date: 29.07.26
 
-## 1. Результаты по сценариям
+## 1. Scenario Results
 
-### Сценарий 1 — Слайд-шоу
+### Scenario 1 — Slideshow
 
-#### СШ-0011808
+#### SL-0011808
 
-**[OK]** Контент слайдов отображается; визуальной недогрузки изображений нет (проблемы поведенческие).
-
-**[FAIL]**
-- Зависания приложения в процессе работы (00:35, 02:20).
-- Лаг приложения (04:14).
-
-**[NOTE]**
-- Лаги при переходе между слайдами — дефект плавности, не недогрузка.
-- Без логов на устройстве причину зависаний установить нельзя; нужна проверка с логами/на эмуляторе.
-
-#### СШ-0011810
-
-**[OK]** Часть контента отобразилась; переходы между слайдами происходят.
+**[OK]** Slide content is displayed; no visible image underloading was observed. The issues are behavioral.
 
 **[FAIL]**
-- Не загружается изображение по центру слайда — белая область (03:48).
-- Слайд прогружается частями, после чего по центру остаётся белая область (05:30).
+- Application freezes during playback at 00:35 and 02:20.
+- Application lag at 04:14.
 
 **[NOTE]**
-- Лаги при подзагрузке изображений (00:14–00:18); артефакт при загрузке (01:18–01:21).
-- При переходах поверх нового слайда остаются фрагменты старого (02:18, 02:27–02:30, 02:45).
-- Слайд загружается сначала правой стороной, затем левой (06:10).
-- Ценник выходит за рамки круга (06:47, см. IMP-001).
+- Lag during slide transitions is a smoothness defect rather than a content-loading defect.
+- Without device logs, the cause of the freezes cannot be isolated; a run with logs or on an emulator is required.
 
-#### СШ-0011650
+#### SL-0011810
 
-**[OK]** Слайды с видео открываются.
+**[OK]** Some content is displayed and slide transitions occur.
 
 **[FAIL]**
-- Видео не подгружается (00:50).
+- The image in the center of the slide does not load, leaving a white area at 03:48.
+- The slide loads in parts and a white area remains in the center at 05:30.
 
 **[NOTE]**
-- Видео лагает при воспроизведении (00:25–00:40); долго грузится и лагает (01:19–01:40).
+- Image-loading lag at 00:14–00:18; loading artifact at 01:18–01:21.
+- Fragments of the previous slide remain over the new slide during transitions at 02:18, 02:27–02:30, and 02:45.
+- The right side of the slide loads before the left side at 06:10.
+- The price tag extends beyond the circular frame at 06:47; see IMP-001.
 
-#### СШ-0011800
+#### SL-0011650
 
-**[OK]** Воспроизведение стартует (до вылета).
+**[OK]** Slides containing video open.
 
 **[FAIL]**
-- Вылет приложения (00:24).
-- Вылет приложения (00:54).
+- Video does not load at 00:50.
 
 **[NOTE]**
-- Вылеты воспроизводимы — дважды за прогон; нужен анализ краш-репорта.
+- Video playback lags at 00:25–00:40 and loads slowly with lag at 01:19–01:40.
 
-#### СШ-0011643
+#### SL-0011800
 
-**[OK]** Сообщение «нет такого слайдшоу» отобразилось — ожидаемая реакция на несуществующий номер (валидация пройдена).
+**[OK]** Playback starts before the crash occurs.
+
+**[FAIL]**
+- Application crash at 00:24.
+- Application crash at 00:54.
+
+**[NOTE]**
+- The crashes reproduced twice in one run; crash-report analysis is required.
+
+#### SL-0011643
+
+**[OK]** The “no such slideshow” message is displayed, which is the expected response for a nonexistent ID.
 
 **[FAIL]** —
 
-**[NOTE]** Не баг: проверка несуществующего СШ отработала корректно.
+**[NOTE]** Not a bug: nonexistent-slideshow validation worked correctly.
 
-#### СШ-0011644
+#### SL-0011644
 
-**[OK]** Сообщение «нет такого слайдшоу» отобразилось — ожидаемая реакция на несуществующий номер (валидация пройдена).
-
-**[FAIL]** —
-
-**[NOTE]** Не баг: проверка несуществующего СШ отработала корректно.
-
-#### СШ-74367 (su)
-
-**[OK]** Слайды отобразились.
+**[OK]** The “no such slideshow” message is displayed, which is the expected response for a nonexistent ID.
 
 **[FAIL]** —
 
-**[NOTE]** Лаги при переходе со слайда на слайд (02:10–02:19).
+**[NOTE]** Not a bug: nonexistent-slideshow validation worked correctly.
 
-### Сценарий 2 — Слайд-шоу
+#### SL-74367 (su)
 
-#### СШ-0011809
-
-**[OK]** Слайды в итоге отображаются.
+**[OK]** Slides are displayed.
 
 **[FAIL]** —
 
-**[NOTE]**
-- Долгая загрузка, элементы прогружаются постепенно (00:20).
-- Фризы при прогрузке карты (01:55) и виджета погоды (02:18).
+**[NOTE]** Lag occurs during slide-to-slide transitions at 02:10–02:19.
 
-#### СШ-0011650
+### Scenario 2 — Slideshow
 
-**[OK]** Слайды открываются; часть виджетов отображается.
+#### SL-0011809
 
-**[FAIL]**
-- Не прогружается виджет в левом верхнем углу (00:55).
-- Зависание слайда — воспроизведение замирает (02:16).
-
-**[NOTE]** Видео в левом нижнем углу долго прогружается и лагает (01:26).
-
-#### СШ-0011645
-
-**[OK]** Часть объектов слайда отображается.
-
-**[FAIL]**
-- Слева не прогружается изображение — белая область (02:34).
-- По центру — белая область (04:00, 06:06).
-
-**[NOTE]**
-- Догрузка объектов с небольшим фризом (01:59–02:06).
-- Слайд грузится сначала правой, затем левой стороной (06:26).
-
-#### СШ-0011646
-
-**[OK]** Слайды отобразились.
+**[OK]** Slides eventually render.
 
 **[FAIL]** —
 
 **[NOTE]**
-- Фриз анимации изображения десертов (02:25).
-- Фризы при переходе между слайдами (03:26).
+- Long loading time with elements appearing progressively at 00:20.
+- Freezes while loading the map at 01:55 and weather widget at 02:18.
 
-#### СШ-07473 (su)
+#### SL-0011650
 
-**[OK]** Слайды отобразились.
-
-**[FAIL]** —
-
-**[NOTE]** Фризы при переходе между слайдами (00:25, 00:32).
-
-### Сценарий 3 — Полный оффлайн (USB)
-
-#### СШ-0011946 (оффлайн, из папки кеша)
-
-**[OK]** При размещении в служебной папке кеша на флешке СШ открывается.
+**[OK]** Slides open and some widgets render.
 
 **[FAIL]**
-- Часть изображений не показывается; видео не загружаются.
+- The upper-left widget does not load at 00:55.
+- Slide playback freezes at 02:16.
+
+**[NOTE]** The bottom-left video loads slowly and lags at 01:26.
+
+#### SL-0011645
+
+**[OK]** Some slide objects are displayed.
+
+**[FAIL]**
+- An image on the left does not load, leaving a white area at 02:34.
+- White areas remain in the center at 04:00 and 06:06.
 
 **[NOTE]**
-- Сверка: онлайн (по вбитому номеру) тот же СШ воспроизводится корректно — дефект специфичен для оффлайн-чтения.
-- Вне служебной папки СШ не находился.
+- Objects finish loading with a small freeze at 01:59–02:06.
+- The right side of the slide loads before the left side at 06:26.
 
-#### СШ-0011961 (оффлайн, из папки кеша)
+#### SL-0011646
 
-**[OK]** При размещении в служебной папке кеша СШ открывается.
-
-**[FAIL]**
-- Перелистывание слайдов виснет; видео на слайдах не воспроизводятся.
-
-**[NOTE]** Оффлайн-воспроизведение фактически нерабочее, несмотря на корректное размещение файлов.
-
-#### Условие размещения файлов (общее)
-
-**[OK]** Оффлайн-запуск возможен.
+**[OK]** Slides are displayed.
 
 **[FAIL]** —
 
 **[NOTE]**
-- Запускается ТОЛЬКО если файлы лежат в служебной папке кеша приложения на флешке, вне любых других папок.
-- Требование неинтуитивно; в UI нет подсказки о пути — пользователь ищет методом тыка.
+- Dessert-image animation freezes at 02:25.
+- Slide transitions freeze at 03:26.
 
-### Сценарий 4 — Подборки
+#### SL-07473 (su)
 
-#### Подборка 72323
+**[OK]** Slides are displayed.
 
-**[OK]** Подборка открывается; часть слайдов отображается.
+**[FAIL]** —
+
+**[NOTE]** Slide transitions freeze at 00:25 and 00:32.
+
+### Scenario 3 — Full Offline Mode (USB)
+
+#### SL-0011946 — offline from the cache folder
+
+**[OK]** The slideshow opens when it is placed in the application cache folder on the USB drive.
 
 **[FAIL]**
-- Часть слайда не подгрузилась — вместо контента белая область (01:32).
+- Some images are not displayed and videos do not load.
 
 **[NOTE]**
-- Загрузка с лагами, страница грузится сверху вниз (00:16–00:22); лаги переходов (00:47, 01:32).
-- По белой области есть сомнение, добавлен ли туда контент — требует сверки с эталоном слайда.
+- Cross-check: the same slideshow works correctly online when launched by ID, so the defect is specific to offline reading.
+- The slideshow is not found when stored outside the application cache folder.
 
-#### Подборка 0011656
+#### SL-0011961 — offline from the cache folder
 
-**[OK]** Подборка отображается.
+**[OK]** The slideshow opens when it is placed in the application cache folder.
+
+**[FAIL]**
+- Slide navigation hangs and videos do not play.
+
+**[NOTE]** Offline playback is effectively unusable despite correct file placement.
+
+#### File placement condition — general
+
+**[OK]** Offline launch is possible.
 
 **[FAIL]** —
 
 **[NOTE]**
-- Микро-лаги видео в левом нижнем углу (01:18).
-- Небольшие фризы при переходе (01:59).
+- It works ONLY when files are stored in the application's dedicated cache folder on the USB drive, not in any other folder.
+- The requirement is not intuitive and the UI gives no path hint, so the user has to discover it by trial and error.
 
-#### Подборка 0011651
+### Scenario 4 — Collections
+
+#### Collection 72323
+
+**[OK]** The collection opens and some slides are displayed.
+
+**[FAIL]**
+- Part of a slide does not load and remains white at 01:32.
+
+**[NOTE]**
+- Loading is visibly progressive with lag from top to bottom at 00:16–00:22; transition lag occurs at 00:47 and 01:32.
+- It is unclear whether the white area should contain content, so comparison with the source slide is required.
+
+#### Collection 0011656
+
+**[OK]** The collection is displayed.
+
+**[FAIL]** —
+
+**[NOTE]**
+- Minor lag in the bottom-left video at 01:18.
+- Small transition freezes at 01:59.
+
+#### Collection 0011651
 
 **[OK]** —
 
 **[FAIL]**
-- Подборка не найдена.
+- Collection not found.
 
-**[NOTE]** Данные/окружение, не баг кода; требует сверки у заказчика.
+**[NOTE]** Test data/environment issue, not a code defect; requires confirmation from the customer.
 
-### Сценарий 5 — Потоки
+### Scenario 5 — Streams
 
-#### Поток 75376 (su)
+#### Stream 75376 (su)
 
-**[OK]** Статус потока отображается.
+**[OK]** Stream status is displayed.
 
 **[FAIL]**
-- При статусе «доступ запрещён» отсутствует поле/кнопка ввода пароля — поток нельзя разблокировать.
+- When the status is “Access denied”, there is no password input or action, so the stream cannot be unlocked.
 
-**[NOTE]** Даже зная пароль, разблокировать невозможно из-за отсутствия UI ввода.
+**[NOTE]** Even when the password is known, the stream cannot be unlocked because the input UI is missing.
 
-#### СШ-0011811 (поток 0011660)
+#### SL-0011811 — stream 0011660
 
-**[OK]** Всё отобразилось корректно, багов не зафиксировано.
+**[OK]** Everything is displayed correctly and no defects were observed.
 
 **[FAIL]** —
 
-**[NOTE]** Без замечаний: воспроизведение и загрузка корректны.
+**[NOTE]** No issues: playback and loading behave correctly.
 
-#### Поток 0011653 → СШ-0011649
+#### Stream 0011653 → SL-0011649
 
 **[OK]** —
 
 **[FAIL]**
-- Потока не существует в среде.
+- The stream does not exist in the environment.
 
-**[NOTE]** Данные/окружение, не баг кода; требует сверки у заказчика.
+**[NOTE]** Test data/environment issue, not a code defect; requires confirmation from the customer.
 
-## 2. Общие выводы
+## 2. Overall Conclusions
 
-- Сценарий 1: зависания и лаг приложения (0011808); белые области и остаточные артефакты (0011810); видео не прогружается/лагает (0011650); два воспроизводимых вылета (0011800, Critical); 0011643/0011644 — проверка несуществующего (ок).
-- Сценарий 2: постепенная загрузка и фризы виджетов (0011809); недогрузка виджета + зависание слайда (0011650); сквозные белые области (0011645); фризы анимации и переходов (0011646, 07473).
-- Сценарий 3: оффлайн запускается ТОЛЬКО из служебной папки кеша на флешке (неинтуитивно, без подсказки в UI); даже при верном размещении ненадёжен — 0011961 виснет и без видео, 0011946 с недогрузкой медиа при том, что онлайн работает.
-- Сценарий 4: лаги загрузки/переходов + белая область (72323); микро-лаги видео и фризы (0011656); 0011651 не найдена (данные).
-- Сценарий 5: 0011811 без багов; 75376 — нет UI ввода пароля; 0011653 не существует (данные).
-- Сквозные паттерны: белая область вместо изображения (недогрузка); лаги/фризы переходов; частичная/постепенная загрузка; проблемы видео; оффлайн нестабилен даже при корректном размещении.
-- Блок-риски: вылеты (Critical); оффлайн — неинтуитивное размещение + артефакты воспроизведения; защищённый поток без ввода пароля (High).
+- Scenario 1: application freezes and lag in 0011808; white areas and residual artifacts in 0011810; video loading/playback issues in 0011650; two reproducible crashes in 0011800, rated Critical; 0011643/0011644 correctly validate nonexistent IDs.
+- Scenario 2: progressive loading and widget freezes in 0011809; missing widget plus slide freeze in 0011650; repeated white areas in 0011645; animation and transition freezes in 0011646 and 07473.
+- Scenario 3: offline mode launches ONLY from the application cache folder on USB, which is non-intuitive and undocumented in the UI; even with correct placement, playback is unreliable — 0011961 hangs with no video, and 0011946 misses media while online mode works.
+- Scenario 4: loading/transition lag plus a white area in 72323; minor video lag and transition freezes in 0011656; collection 0011651 is missing from the environment.
+- Scenario 5: 0011811 works without observed defects; 75376 has no password-entry UI; stream 0011653 does not exist in the environment.
+- Cross-cutting patterns: white areas caused by incomplete image loading; transition lag/freezes; partial/progressive loading; video issues; offline playback remains unstable even when files are placed correctly.
+- Release risks: application crashes rated Critical; offline mode combines an undocumented placement requirement with playback defects; protected streams cannot be unlocked through the UI.
 
-## 3. Рекомендации
+## 3. Recommendations
 
-**Загрузка изображений и медиа**
-- Устранить сквозную недогрузку с белой областью (0011810, 0011645, 72323): дожидание/предзагрузка в рамках тайминга слайда либо плавная деградация без «висящей» белой области.
-- Корректная загрузка/воспроизведение видео (0011650, 0011656) и прогрузка виджетов без фризов (0011809, 0011650).
+**Image and media loading**
+- Fix repeated incomplete loading that leaves white areas in 0011810, 0011645, and collection 72323. Either preload content within the slide timing or provide graceful degradation without a persistent white placeholder.
+- Ensure reliable video loading/playback in 0011650 and 0011656 and load widgets without freezes in 0011809 and 0011650.
 
-**Оффлайн (High)**
-- Принимать файлы с USB из любой папки либо явно подсказывать требуемый путь в UI (сейчас только служебная папка кеша, поиск методом тыка).
-- Починить оффлайн на 0011961 (зависание перелистывания, нет видео) и 0011946 (недогрузка медиа при рабочем онлайне).
+**Offline mode — High**
+- Accept slideshow files from any USB folder or explicitly show the required path in the UI. The current behavior depends on a dedicated cache folder discovered by trial and error.
+- Fix offline playback in 0011961, where slide navigation hangs and video is unavailable, and in 0011946, where media is missing even though the same slideshow works online.
 
-**Стабильность (Critical/High)**
-- Локализовать вылеты на 0011800 по краш-репорту; проверить зависания приложения и слайда (0011808, 0011650).
+**Stability — Critical/High**
+- Investigate crashes in 0011800 using crash reports and analyze application/slide freezes in 0011808 and 0011650.
 
-**Производительность переходов**
-- Профилировать переходы между слайдами (лаги/фризы сквозные); убрать остаточные артефакты старого слайда (0011810).
+**Transition performance**
+- Profile slide transitions because lag/freezes appear across multiple scenarios; remove residual previous-slide artifacts in 0011810.
 
-**Потоки (High)**
-- Обеспечить UI ввода пароля/разблокировки при «доступ запрещён» (75376).
+**Streams — High**
+- Add password entry/unlock UI for the “Access denied” state in stream 75376.
 
-**UI / вёрстка**
-- Выровнять ценник по рамкам круга на 0011810 (IMP-001); поправить фризы анимации (0011646).
+**UI / layout**
+- Align the price tag within the circular frame in 0011810, tracked as IMP-001, and fix animation freezes in 0011646.
 
-**Данные / окружение (вопрос к заказчику)**
-- Сверить наличие потока 0011653 и подборки 0011651 в среде; после этого прогнать отдельно.
+**Test data / environment — customer confirmation required**
+- Confirm whether stream 0011653 and collection 0011651 should exist in the environment, then execute those scenarios separately.
