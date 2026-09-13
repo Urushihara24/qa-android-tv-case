@@ -1,7 +1,7 @@
-# Предложения по улучшению (не дефекты)
+# Improvement Suggestions (Not Defects)
 
-### IMP-001 — Ценник выходит за рамки круга (выровнять)
+### IMP-001 — Price tag extends beyond the circular frame
 
-- Сценарий 1 · 0011810 · Low
-- Описание: ценник на слайде выходит за область круглой рамки (06:47).
-- Предложение: выровнять ценник по рамкам круга.
+- Scenario 1 · 0011810 · Low
+- Description: the price tag on the slide extends outside the circular frame (06:47).
+- Suggestion: align the price tag within the circular frame.
