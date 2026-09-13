@@ -1,22 +1,22 @@
-# Легенда
+# Legend
 
-**Статусы кейсов**
+**Test case statuses**
 
-- Pass — проверка пройдена / ожидаемое поведение.
-- Fail — есть дефект (см. bugs/BUG_REPORT.md по ID).
-- Blocked — нельзя выполнить: данные/окружение, не баг кода.
+- Pass — the check passed and expected behavior was confirmed.
+- Fail — a defect is present (see `bugs/BUG_REPORT.md` by ID).
+- Blocked — the check cannot be completed because of test data or environment constraints, not a code defect.
 
-**Серьёзность**
+**Severity**
 
-- Critical — падение / блок функции.
-- Major — сценарий нарушен / сильные артефакты.
-- Minor — косметика / редкие фризы.
-- Trivial — мелочи.
+- Critical — crash or complete feature blocker.
+- Major — scenario is broken or severe artifacts are present.
+- Minor — cosmetic issue or occasional freeze.
+- Trivial — small issue with minimal impact.
 
-**Приоритет**
+**Priority**
 
-- High / Medium / Low — порядок исправления для разработки.
+- High / Medium / Low — suggested fix order for development.
 
-**Статусы багов**
+**Bug statuses**
 
 - Open / In Progress / Fixed / Verified / Closed.
