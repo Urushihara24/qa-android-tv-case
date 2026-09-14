@@ -1,6 +1,6 @@
-# Android TV Slideshow App Testing
+# Android TV Slideshow App — Commercial QA Project
 
-> Manual QA case covering slideshow playback, caching, offline USB mode, collections, scheduled streams, and behavior differences between online and offline execution.
+> Paid commercial manual QA engagement covering slideshow playback, caching, offline USB mode, collections, scheduled streams, and behavior differences between online and offline execution.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Android_TV-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android TV">
@@ -20,9 +20,9 @@
 - `test_cases/TEST_CASES.md` — executed checks; each failed case references the related bug ID.
 - `bugs/BUG_REPORT.md` — scenario-based defect reports with steps, Actual, Expected, Severity, and Priority.
 - `docs/IMPROVEMENTS.md` — improvement suggestions that are intentionally separated from defects.
-- `docs/LEGEND.md` — status and severity legend used across the case.
+- `docs/LEGEND.md` — status and severity legend used across the project.
 
-## How the case is structured
+## How the QA artifacts are structured
 
 Test cases and defects are linked by ID: the test-case table shows which execution produced each defect, while the bug report explains what failed and what the expected behavior was.
 
