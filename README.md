@@ -35,3 +35,9 @@ Online and offline behavior were compared deliberately so cache / USB-reading fa
 - link every failed case to a concrete defect;
 - keep product improvements separate from bugs;
 - preserve raw runtime wording and evidence references where they matter for reproduction.
+
+---
+
+## More QA & engineering work
+
+[🌐 Portfolio](https://vsevolodqa.ru/) · [💬 Telegram](https://t.me/vsevolod_qa) · [GitHub profile](https://github.com/Urushihara24)
